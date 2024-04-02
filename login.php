@@ -6,7 +6,6 @@
     <title>Login</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.7/dist/sweetalert2.min.css">
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js' integrity='sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==' crossorigin='anonymous'></script>
 </head>
 <body>
     <div class="container">
@@ -17,7 +16,7 @@
                         Login
                     </div>
                     <div class="card-body">
-                        <form action="login_process.php" method="POST">
+                        <form id="loginForm" action="login_process.php" method="POST">
                             <div class="form-group">
                                 <label for="username">Username:</label>
                                 <input type="text" class="form-control" id="username" name="username" required>
@@ -27,28 +26,45 @@
                                 <input type="password" class="form-control" id="password" name="password" required>
                             </div>
                             <button type="submit" class="btn btn-primary">Login</button>
-                            
                         </form>
-                        <button id="btn"> Button !</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <scr src="assets/js/script.js"></scr>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-    $(document).ready(function(){
-        $('#btn').on('click', function(){
-            Swal.fire({
-                title: "The Internet?",
-                text: "That thing is still around?",
-                icon: "question"
+        $(document).ready(function(){
+            $('#loginForm').submit(function(event) {
+                event.preventDefault();
+
+                var formData = $(this).serialize();
+
+                $.ajax({
+                    url: 'login_process.php',
+                    type: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        Swal.fire({
+                            title: 'Login Result',
+                            icon: 'success'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = 'index.php';
+                            }
+                        });
+                    },
+                    error: function() {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Failed to login',
+                            icon: 'error'
+                        });
+                    }
+                });
             });
         });
-    });
-</script>
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.7/dist/sweetalert2.all.min.js"></script>
+    </script>
 </body>
 </html>
