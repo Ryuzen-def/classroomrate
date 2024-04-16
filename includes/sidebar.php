@@ -45,7 +45,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="#">
+                <a class="nav-link text-white" href="calender.php">
                   <i class="fa fa-calendar-alt mr-2"></i>Kalender
                 </a>
               </li>
