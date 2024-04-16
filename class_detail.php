@@ -34,7 +34,6 @@ $assignments = getAssignmentsByClassId($class_id);
 <body>
   <div class="container-fluid">
     <div class="row">
-      <?php include 'includes/sidebar.php'; ?>
       <div class="col-md-9 col-lg-10 main-content">
         <div class="class-detail-container">
           <h2><?php echo $class['name']; ?> - Detail Kelas</h2>

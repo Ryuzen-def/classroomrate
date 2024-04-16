@@ -17,7 +17,7 @@
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="index3.html" class="nav-link">Home</a>
+                <a href="index.php" class="nav-link">Home</a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="#" class="nav-link">Contact</a>
@@ -205,7 +205,7 @@
                                 data-accordion="false">
 
                                 <li class="nav-item">
-                                    <a href="/" class="nav-link">
+                                    <a href="index.php" class="nav-link">
                                         <i class="nav-icon fas fa-tachometer-alt"></i>
                                         <p>
                                             Dashboard
@@ -213,18 +213,10 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="calender.php" class="nav-link">
                                         <i class="nav-icon fa fa-calendar"></i>
                                         <p>
                                             Kalender
-                                        </p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="nav-icon fa fa-users"></i>
-                                        <p>
-                                            Terdaftar
                                         </p>
                                     </a>
                                 </li>
