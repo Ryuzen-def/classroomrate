@@ -1,46 +1,47 @@
+<?php session_start(); ?>
+<?php include "header.php" ?>
 <?php require_once 'includes/config.php'; ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Edit Kelas</title>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-  <?php include 'includes/functions.php'; ?>
-
-  <div class="container-fluid">
-    <div class="row">
-      <?php include 'includes/sidebar.php'; ?>
-      <div class="col-md-9 col-lg-10 main-content">
-        <h2>Edit Kelas</h2>
-        <?php
-          // Ambil data kelas dari database berdasarkan ID
-          $id = $_GET['id'];
-          $class = getClassById($id);
-        ?>
-        <form action="includes/update_class.php" method="post">
-          <input type="hidden" name="id" value="<?php echo $class['id']; ?>">
-          <div class="form-group">
-            <label for="name">Nama Kelas</label>
-            <input type="text" class="form-control" id="name" name="name" value="<?php echo $class['name']; ?>" required>
-          </div>
-          <div class="form-group">
-            <label for="teacher">Nama Guru</label>
-            <input type="text" class="form-control" id="teacher" name="teacher" value="<?php echo $class['teacher']; ?>" required>
-          </div>
-          <button type="submit" class="btn btn-primary">Update</button>
-        </form>
+<?php include 'includes/functions.php'; ?>
+<div class="content-wrapper" bis_skin_checked="1" style="min-height: 1604.8px;">
+  <section class="content-header">
+    <div class="container-fluid" bis_skin_checked="1">
+      <div class="row mb-2" bis_skin_checked="1">
+        <div class="col-sm-6" bis_skin_checked="1">
+          <h1>Edit Kelas</h1>
+        </div>
+        <div class="col-sm-6" bis_skin_checked="1">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Edit Kelas</li>
+          </ol>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Bootstrap JS -->
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="assets/js/script.js"></script>
-</body>
-</html>
+  <section class="content">
+    <div class="card">
+      <div class="card-body">
+      <?php
+      // Ambil data kelas dari database berdasarkan ID
+      $id = $_GET['id'];
+      $class = getClassById($id);
+      ?>
+      <form action="includes/update_class.php" method="post">
+        <input type="hidden" name="id" value="<?php echo $class['id']; ?>">
+        <div class="form-group">
+          <label for="name">Nama Kelas</label>
+          <input type="text" class="form-control" id="name" name="name" value="<?php echo $class['name']; ?>" required>
+        </div>
+        <div class="form-group">
+          <label for="teacher">Nama Guru</label>
+          <input type="text" class="form-control" id="teacher" name="teacher" value="<?php echo $class['teacher']; ?>"
+            required>
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+      </form>
+      </div>
+    </div>
+</div>
+</div>
+<?php include "footer.php"?>

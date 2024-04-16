@@ -1,37 +1,22 @@
 <?php
-require_once 'database.php';
+session_start();
+include ("includes/config.php");
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  // Mengambil data yang dikirimkan dari form login
+  $username = $_POST["name"];
+  $password = $_POST["password"];
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+  // Membuat query untuk mengambil data pengguna dari database
+  $sql = "SELECT * FROM students WHERE name='$username' AND password='$password'";
+  $result = $conn->query($sql);
 
-    $sql = "SELECT * FROM users WHERE username = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows === 1) {
-        $user = $result->fetch_assoc();
-
-        if (password_verify($password, $user['password'])) {
-            // Set session
-            session_start();
-            $_SESSION['user_id'] = $user['user_id'];
-            $_SESSION['username'] = $user['username'];
-
-            echo "Login successful!";
-            // Redirect to welcome page or any other page
-            // header('Location: welcome.php');
-            // exit;
-        } else {
-            echo "Incorrect password!";
-        }
-    } else {
-        echo "User not found!";
-    }
-} else {
-    header('Location: index.php');
-    exit;
+  // Memeriksa apakah query berhasil dieksekusi dan apakah ada hasil yang ditemukan
+  if ($result->num_rows > 0) {
+      $_SESSION["username"] = $username;
+      header("Location: index.php");
+      exit();
+  } else {
+      $error_message = "Nama pengguna atau kata sandi salah.";
+  }
+  $conn->close();
 }
-?>

@@ -19,7 +19,7 @@
                         <form id="loginForm" action="login_process.php" method="POST">
                             <div class="form-group">
                                 <label for="username">Username:</label>
-                                <input type="text" class="form-control" id="username" name="username" required>
+                                <input type="text" class="form-control" id="username" name="name" required>
                             </div>
                             <div class="form-group">
                                 <label for="password">Password:</label>

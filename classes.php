@@ -1,32 +1,34 @@
+<?php session_start(); ?>
+<?php include "header.php" ?>
 <?php require_once 'includes/config.php'; ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Daftar Kelas</title>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-  <?php include 'includes/functions.php'; ?>
+<?php include 'includes/functions.php'; ?>
+<div class="content-wrapper" bis_skin_checked="1" style="min-height: 1604.8px;">
+  <section class="content-header">
+    <div class="container-fluid" bis_skin_checked="1">
+      <div class="row mb-2" bis_skin_checked="1">
+        <div class="col-sm-6" bis_skin_checked="1">
+          <h1>Halaman Kelas</h1>
+        </div>
+        <div class="col-sm-6" bis_skin_checked="1">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Halaman Kelas</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <div class="container-fluid">
+  <section class="content">
     <div class="row">
-      <?php include 'includes/sidebar.php'; ?>
-      <div class="col-md-9 col-lg-10 main-content">
-        <h2>Daftar Kelas</h2>
-        <div class="row">
-          <?php
-            $classes = getAllClasses();
-            foreach ($classes as $class) {
-              // Ambil nilai rating dari database
-              $ratings = getClassRatings($class['id']);
-              $average_rating = calculateAverageRating($ratings);
+      <?php
+      $classes = getAllClasses();
+      foreach ($classes as $class) {
+        // Ambil nilai rating dari database
+        $ratings = getClassRatings($class['id']);
+        $average_rating = calculateAverageRating($ratings);
 
-              echo '
+        echo '
                 <div class="col-md-6 col-lg-4 mb-4">
                   <div class="card">
                     <a href="class_detail.php?id=' . $class['id'] . '" style="text-decoration: none; color: inherit;">
@@ -46,15 +48,8 @@
                   </div>
                 </div>
               ';
-            }
-          ?>
-        </div>
-      </div>
+      }
+      ?>
     </div>
-  </div>
-
-  <!-- Bootstrap JS -->
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="assets/js/script.js"></script>
-</body>
-</html>
+</div>
+<?php include "footer.php"?>

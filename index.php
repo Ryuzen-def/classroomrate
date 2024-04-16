@@ -1,35 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Classroom</title>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-  <?php include 'includes/functions.php'; ?>
+<?php
+session_start();
+if (!isset($_SESSION["username"])) {
+    header("Location: login.php");
+    exit(); // Pastikan untuk menghentikan eksekusi skrip setelah redirect
+}
+?>
+<?php include "header.php" ?>
+<?php include 'includes/functions.php'; ?>
 
-  <div class="container-fluid">
-    <div class="row">
-      <?php include 'includes/sidebar.php'; ?>
-      <div class="col-md-9 col-lg-10 main-content">
-        <!-- Tambahkan tombol register/login di pojok kanan atas -->
-        <div class="d-flex justify-content-end mb-3">
-          <a href="register.php" class="btn btn-primary mr-2">Register</a>
-          <a href="login.php" class="btn btn-secondary">Login</a>
+<div class="content-wrapper" bis_skin_checked="1" style="min-height: 1604.8px;">
+  <section class="content-header">
+    <div class="container-fluid" bis_skin_checked="1">
+      <div class="row mb-2" bis_skin_checked="1">
+        <div class="col-sm-6" bis_skin_checked="1">
+          <h1>Dashboard Page</h1>
         </div>
-        <!-- Akhir tambahan -->
-        <a href="add_class.php" class="btn btn-primary">Tambah Kelas</a>
-        <h2>Daftar Kelas</h2>
-        <div class="row">
-          <?php
-            // Memanggil fungsi getAllClasses() untuk mendapatkan daftar kelas
-            $classes = getAllClasses();
-            foreach ($classes as $class) {
-              echo '
+        <div class="col-sm-6" bis_skin_checked="1">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Dashboard Page</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content">
+    <div class="row">
+      <?php
+      $classes = getAllClasses();
+      foreach ($classes as $class) {
+        echo '
                 <div class="col-md-6 col-lg-4 mb-4">
                   <div class="card">
                     <div class="card-header bg-danger text-white d-flex align-items-center">
@@ -44,16 +45,10 @@
                   </div>
                 </div>
               ';
-            }
-          ?>
-        </div>
-      </div>
-      </div>
+      }
+      ?>
     </div>
-  </div>
+  </section>
+</div>
 
-  <!-- Bootstrap JS -->
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="assets/js/script.js"></script>
-</body>
-</html>
+<?php include "footer.php" ?>
