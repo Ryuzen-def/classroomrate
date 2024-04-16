@@ -147,7 +147,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
 
         <a href="#" class="brand-link">
-            <span class="brand-text font-weight-light">AdminLTE 3</span>
+            <span class="brand-text font-weight-bold">Classroom Rate</span>
         </a>
 
         <div class="sidebar os-host os-theme-light os-host-overflow os-host-overflow-y os-host-resize-disabled os-host-scrollbar-horizontal-hidden os-host-transition"
@@ -233,14 +233,6 @@
                                         <i class="nav-icon fas fa-chalkboard-teacher"></i>
                                         <p>
                                             Daftar Kelas
-                                        </p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="nav-icon fas fa-archive"></i>
-                                        <p>
-                                            Kelas yang diarsipkan
                                         </p>
                                     </a>
                                 </li>
