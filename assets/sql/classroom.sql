@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Mar 2024 pada 07.27
+-- Waktu pembuatan: 18 Apr 2024 pada 03.23
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.0.28
 
@@ -107,7 +107,13 @@ INSERT INTO `ratings` (`id`, `class_id`, `rating`, `created_at`) VALUES
 (3, 1, 5, '2024-03-20 05:22:06'),
 (4, 1, 4, '2024-03-20 05:22:11'),
 (5, 1, 3, '2024-03-20 05:22:27'),
-(6, 1, 1, '2024-03-20 05:22:28');
+(6, 1, 1, '2024-03-20 05:22:28'),
+(7, 1, 5, '2024-03-25 01:01:29'),
+(8, 1, 2, '2024-03-25 01:01:32'),
+(9, 1, 5, '2024-03-25 01:01:36'),
+(10, 1, 5, '2024-03-25 01:04:14'),
+(11, 1, 5, '2024-03-25 01:04:18'),
+(12, 1, 5, '2024-03-25 01:04:20');
 
 -- --------------------------------------------------------
 
@@ -128,6 +134,27 @@ CREATE TABLE `students` (
 
 INSERT INTO `students` (`id`, `name`, `email`, `password`) VALUES
 (1, 'Raihan', 'rehan@example.com', '123');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `email`) VALUES
+(1, 'admin', '$2y$10$OtxJNbP9q1IlJy5uhxzy1eTrafPET1w2k7T18pbn4/wO5yw17aFNK', 'admin@example.com'),
+(2, 'raihan', '$2y$10$6hk6Ypumo9IGIpkKo7/KV.7nKRWnSYFtLON3AxelM1Tl6CGmnuPSy', 'raihan@example.com');
 
 --
 -- Indexes for dumped tables
@@ -169,6 +196,13 @@ ALTER TABLE `students`
   ADD UNIQUE KEY `email` (`email`);
 
 --
+-- Indeks untuk tabel `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
+
+--
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
@@ -194,13 +228,19 @@ ALTER TABLE `enrollments`
 -- AUTO_INCREMENT untuk tabel `ratings`
 --
 ALTER TABLE `ratings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `students`
 --
 ALTER TABLE `students`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
