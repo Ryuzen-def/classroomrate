@@ -41,7 +41,7 @@ $assignments = getAssignmentsByClassId($class_id);
           <h3>Daftar Tugas</h3>
           <ul>
             <?php foreach ($assignments as $assignment): ?>
-              <li><?php echo $assignment['title']; ?></li>
+              <li><?php echo $assignment['title']; ?></li>  
             <?php endforeach; ?>
           </ul>
 
